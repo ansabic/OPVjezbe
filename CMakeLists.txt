@@ -15,4 +15,4 @@ add_executable(OPVjezbe
         vjezba2/zad1.cpp
         vjezba2/zad2.cpp
         vjezba2/zad3.cpp
-        vjezba2/zad4.cpp)
+        vjezba2/zad4.cpp vjezba3/zad1.cpp vjezba3/input.h vjezba3/input.cpp)

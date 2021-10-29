@@ -15,7 +15,7 @@ void minMax(int *&niz, int n, int &min, int &max) {
     max = _max;
 }
 
-int main() {
+int main21() {
     int n;
     cout << "Unesi broj clanova niza:" << endl;
     cin >> n;
