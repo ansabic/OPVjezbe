@@ -7,35 +7,30 @@
 
 using namespace std;
 
-void printMinUsingReccursion(int* niz,int position, int n) {
-    int min = niz[position];
-    for(int i = position;i < n;i++) {
-        if(niz[i] < min){
-            return printMinUsingReccursion(niz, i, n);
-        }
+void minMaxUsingRecursion(int *niz, int position, int n, int *min, int *max) {
+    if (position != n) {
+        if (niz[position] > *max)
+            *max = niz[position];
+        if (niz[position] < *min)
+            *min = niz[position];
+        minMaxUsingRecursion(niz, position + 1, n, min, max);
     }
-    cout << "Minimum je " << min << ".\n";
-}
-void printMaxUsingReccursion(int* niz,int position, int n) {
-    int max = niz[position];
-    for(int i = position;i < n;i++) {
-        if(niz[i] > max){
-            return printMaxUsingReccursion(niz, i, n);
-        }
-    }
-    cout << "Maksimum je " << max << ".\n";
-
 }
 
 int main14() {
     int n;
-    cout<< "Unesi broj clanova niza: \n";
+    cout << "Unesi broj clanova niza: \n";
     cin >> n;
     int niz[n];
     cout << "Unesi niz od " << n << " clanova: \n";
-    for(int i = 0; i < n; i++) {
+    for (int i = 0; i < n; i++) {
         cin >> niz[i];
     }
-    printMinUsingReccursion(niz, 0, n);
-    printMaxUsingReccursion(niz, 0, n);
+    int *min = new int;
+    int *max = new int;
+    *min = niz[0];
+    *max = niz[0];
+    minMaxUsingRecursion(niz, 0, n, min, max);
+    cout << "Min je " << *min << endl;
+    cout << "Max je " << *max << endl;
 }

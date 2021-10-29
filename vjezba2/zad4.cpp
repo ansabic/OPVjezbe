@@ -2,7 +2,7 @@
 
 using namespace std;
 
-int main() {
+int main24() {
     int init = 10;
     MyVector mv{};
     mv.vector_new(init);

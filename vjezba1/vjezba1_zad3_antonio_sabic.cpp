@@ -1,34 +1,33 @@
 #include<iostream>
 #include <ostream>
-#include <cmath>
-#include <iomanip>
-#include <ctime>
-#include <cstdlib>
 
 using namespace std;
 
-void printMinAndMax(int* niz, int n) {
-    int tempMin = niz[0];
-    int tempMax = niz[0];
-    for(int i = 0; i < n;i++){
-        if(niz[i] > tempMax){
-            tempMax = niz[i];
+void findMinAndMax(int *niz, int n, int *min, int *max) {
+    for (int i = 1; i < n; i++) {
+        if (niz[i] > *max) {
+            *max = niz[i];
         }
-        if(niz[i] < tempMin){
-            tempMin = niz[n];
+        if (niz[i] < *min) {
+            *min = niz[i];
         }
     }
-    cout << "\n Minimum je "<< tempMin <<" a maksimum je " <<  tempMax << "!\n";
 }
 
 int main13() {
     int n;
-    cout<< "Unesi broj clanova niza: \n";
+    cout << "Unesi broj clanova niza: \n";
     cin >> n;
     int niz[n];
     cout << "Unesi niz od " << n << " clanova: \n";
-    for(int i = 0; i < n; i++) {
+    for (int i = 0; i < n; i++) {
         cin >> niz[i];
     }
-    printMinAndMax(niz, n);
+    int *min = new int;
+    int *max = new int;
+    *min = niz[0];
+    *max = niz[0];
+    findMinAndMax(niz, n, min, max);
+    cout << "minimum is " << min[0] << endl;
+    cout << "maximum is " << max[0] << endl;
 }

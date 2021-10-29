@@ -1,8 +1,6 @@
 #include<iostream>
 #include <ostream>
-#include <cmath>
 #include <iomanip>
-#include <ctime>
 #include <cstdlib>
 
 using namespace std;
@@ -10,7 +8,7 @@ using namespace std;
 typedef struct matrix {
     int n;
     int m;
-    float** field;
+    float **field;
 
     matrix nullMatrix() {
         matrix tempMatrix;
@@ -18,18 +16,19 @@ typedef struct matrix {
         tempMatrix.m = 0;
         return tempMatrix;
     }
+
     matrix newMatrix() {
         cout << "Insert number of rows for a new matrix: \n";
         cin >> n;
         cout << "Insert number of columns for a new matrix: \n";
         cin >> m;
-        field = new float*[n];
-        for(int i = 0; i < n; i++) {
+        field = new float *[n];
+        for (int i = 0; i < n; i++) {
             field[i] = new float[m];
-            for(int j = 0; j < m; j++) {
+            for (int j = 0; j < m; j++) {
                 cin >> field[i][j];
             }
-            
+
         }
         return *this;
     }
@@ -40,81 +39,78 @@ typedef struct matrix {
         cin >> n;
         cout << "Insert number of columns for a given matrix: \n";
         cin >> m;
-        field = new float*[n];
+        field = new float *[n];
         cout << "Insert lower number for range: \n";
         cin >> lower;
         cout << "Insert higher number for range: \n";
         cin >> higher;
-        for(int i= 0; i < n; i++) {
+        for (int i = 0; i < n; i++) {
             field[i] = new float[m];
-            for(int j = 0; j < m; j++) {
-                field[i][j] = lower + rand()%(higher - lower + 1);
+            for (int j = 0; j < m; j++) {
+                field[i][j] = lower + rand() % (higher - lower + 1);
             }
         }
         return *this;
     }
 
     matrix add(matrix b) {
-        if(n == b.n && m == b.m){
+        if (n == b.n && m == b.m) {
             matrix newMatrix;
             newMatrix.m = m;
             newMatrix.n = n;
-            newMatrix.field = new float*[n];
-            for(int i = 0; i < n; i++) {
+            newMatrix.field = new float *[n];
+            for (int i = 0; i < n; i++) {
                 newMatrix.field[i] = new float[m];
-                for(int j = 0; j < m; j++) {
+                for (int j = 0; j < m; j++) {
                     newMatrix.field[i][j] = field[i][j] + b.field[i][j];
                 }
             }
             return newMatrix;
-            
-        }
-        else {
+
+        } else {
             cout << "Number of rows and columns must be the same! \n";
             return nullMatrix();
         }
     }
 
     matrix substract(matrix b) {
-        if(n == b.n && m == b.m) {
+        if (n == b.n && m == b.m) {
             matrix newMatrix;
             newMatrix.m = m;
             newMatrix.n = n;
-            newMatrix.field = new float*[n];
-            for(int i = 0; i < n; i++) {
+            newMatrix.field = new float *[n];
+            for (int i = 0; i < n; i++) {
                 newMatrix.field[i] = new float[m];
-                for(int j = 0; j < m; j++) {
+                for (int j = 0; j < m; j++) {
                     newMatrix.field[i][j] = field[i][j] - b.field[i][j];
                 }
             }
             return newMatrix;
-            
-        }
-         else {
+
+        } else {
             cout << "Number of rows and columns must be the same! \n";
             return nullMatrix();
         }
     }
 
     matrix multiply(matrix b) {
-        if(m == b.n) {
+        if (m == b.n) {
             matrix newMatrix;
             newMatrix.n = n;
             newMatrix.m = b.m;
-            newMatrix.field = new float*[n];
-            for(int i = 0; i < n; i++) {
+            newMatrix.field = new float *[n];
+            for (int i = 0; i < n; i++) {
                 newMatrix.field[i] = new float[b.m];
-                for(int j = 0; j < b.m; j++){
+                for (int j = 0; j < b.m; j++) {
                     float sum = 0;
-                    for(int k = 0;k < b.n; k++) {
-                        sum = sum + field[i][k]*b.field[k][j];
+                    for (int k = 0; k < b.n; k++) {
+                        sum = sum + field[i][k] * b.field[k][j];
                     }
                     newMatrix.field[i][j] = sum;
                 }
             }
             return newMatrix;
-        }
-        else {
+        } else {
             cout << "Number of columns of the first matrix must be as same as number of rows of the second matrix! \n";
             return nullMatrix();
         }
@@ -124,10 +120,10 @@ typedef struct matrix {
         matrix newMatrix;
         newMatrix.n = m;
         newMatrix.m = n;
-        newMatrix.field = new float*[m];
-        for(int i= 0; i < m; i++) {
+        newMatrix.field = new float *[m];
+        for (int i = 0; i < m; i++) {
             newMatrix.field[i] = new float[n];
-            for(int j = 0; j < n; j++) {
+            for (int j = 0; j < n; j++) {
                 newMatrix.field[i][j] = field[j][i];
             }
         }
@@ -138,16 +134,15 @@ typedef struct matrix {
         cout << fixed;
         cout << setprecision(4);
         cout << right;
-        if(n != 0 || m != 0) {
-            for(int i = 0; i < n;i++) {
-                for(int j = 0; j < m; j++) {
+        if (n != 0 || m != 0) {
+            for (int i = 0; i < n; i++) {
+                for (int j = 0; j < m; j++) {
                     cout << field[i][j] << " ";
                 }
                 cout << "\n";
             }
             return 1;
-        }
-        else {
+        } else {
             cout << "Wrong input! \n";
             return -1;
         }

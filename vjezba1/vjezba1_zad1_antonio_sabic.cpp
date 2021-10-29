@@ -1,7 +1,9 @@
 #include <iostream>
 #include <iomanip>
+
 using namespace std;
-int main11(){
+
+int main11() {
     bool flag;
     cout << "unesi " << true << " - " << false << endl;
     cin >> flag;
@@ -14,4 +16,4 @@ int main11(){
     cout << "pi = " << scientific << uppercase;
     cout << setprecision(7) << setw(20) << setfill('0');
     cout << pi << endl;
-    }
+}
