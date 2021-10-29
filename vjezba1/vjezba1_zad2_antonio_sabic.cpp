@@ -157,7 +157,7 @@ typedef struct matrix {
 
 };
 
-int main() {
+int main12() {
     matrix newMatrix, randomMatrix, a, b;
     //Unos matrice i ispis
     cout << "Insert a test matrix: \n";

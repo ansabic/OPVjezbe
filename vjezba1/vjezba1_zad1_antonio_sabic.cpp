@@ -1,7 +1,7 @@
 #include <iostream>
 #include <iomanip>
 using namespace std;
-int main(){
+int main11(){
     bool flag;
     cout << "unesi " << true << " - " << false << endl;
     cin >> flag;

@@ -21,7 +21,7 @@ void printMinAndMax(int* niz, int n) {
     cout << "\n Minimum je "<< tempMin <<" a maksimum je " <<  tempMax << "!\n";
 }
 
-int main() {
+int main13() {
     int n;
     cout<< "Unesi broj clanova niza: \n";
     cin >> n;

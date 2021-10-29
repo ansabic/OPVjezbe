@@ -27,7 +27,7 @@ void printMaxUsingReccursion(int* niz,int position, int n) {
 
 }
 
-int main() {
+int main14() {
     int n;
     cout<< "Unesi broj clanova niza: \n";
     cin >> n;
