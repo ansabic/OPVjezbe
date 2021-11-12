@@ -20,4 +20,4 @@ add_executable(OPVjezbe
         vjezba3/unos.cpp
         vjezba3/zad2.cpp
         vjezba3/print.h
-        vjezba3/print.cpp vjezba3/zad3.cpp vjezba3/zad4.cpp vjezba3/zad5.cpp vjezba3/zad6.cpp)
+        vjezba3/print.cpp vjezba3/zad3.cpp vjezba3/zad4.cpp vjezba3/zad5.cpp vjezba3/zad6.cpp vjezba5/point.cpp vjezba5/point.h vjezba5/zad1.cpp vjezba5/zad2.cpp vjezba5/gun.cpp vjezba5/gun.h vjezba5/target.cpp vjezba5/target.h)

@@ -8,7 +8,7 @@
 
 using namespace std;
 
-int main() {
+int main36() {
     vector<string> v = vector<string>();
     int n;
     cout << "Enter number of strings: " << endl;
