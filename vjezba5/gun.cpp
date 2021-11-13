@@ -3,6 +3,9 @@
 //
 
 #include "gun.h"
+#include "iostream"
+
+using namespace std;
 
 gun::gun(point p, int maxLoad, int currentLoad) {
     position = p;
@@ -11,10 +14,19 @@ gun::gun(point p, int maxLoad, int currentLoad) {
 }
 
 void gun::shoot() {
-    if (currentLoad != 0)
+    if (currentLoad != 0) {
         currentLoad--;
+        cout << currentLoad << "/" << maxLoad << endl;
+    } else
+        cout << "Empty!" << endl;
 }
 
 void gun::reload() {
     currentLoad = maxLoad;
+    cout << "Reloaded!" << endl;
+    cout << currentLoad << "/" << maxLoad << endl;
+}
+
+point gun::getPosition() const {
+    return position;
 }

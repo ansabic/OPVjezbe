@@ -7,5 +7,5 @@
 using namespace std;
 
 int main() {
-    target t = target(point(), point());
+
 }

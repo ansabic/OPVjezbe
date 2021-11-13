@@ -17,6 +17,8 @@ public:
     void shoot();
 
     void reload();
+
+    point getPosition() const;
 };
 
 

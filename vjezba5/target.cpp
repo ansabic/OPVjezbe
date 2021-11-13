@@ -14,6 +14,17 @@ void target::kill() {
     hit = true;
 }
 
-bool target::onTrajectory(double angle) {
-    if ()
+bool target::isHit() const {
+    return hit;
+}
+
+bool target::onTrajectory(trajectory tr) {
+    if (tr.isParametrized()) {
+        if (tr.isParametrizedX())
+            return tr.getParamX() >= bottomLeftPoint.getX() && tr.getParamX() <= upperRightPoint.getX();
+        else
+            return tr.getParamY() >= bottomLeftPoint.getY() && tr.getParamY() <= upperRightPoint.getY();
+    } else {
+        if (bottomLeftPoint.getX())
+    }
 }
