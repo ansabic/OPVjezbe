@@ -11,11 +11,13 @@ game::game(gun g, target *t, int n, trajectory tr) : myGun(g), myTargets(t), myT
 
 void game::execute(const string &command, const double angle) {
     if (command == SHOOT) {
-        this->myGun.shoot();
         if (!myGun.isEmpty()) {
+            this->myGun.shoot();
             for (int i = 0; i < noTargets; i++) {
-                if (!myTargets[i].isHit() && myTargets[i].onTrajectory(myTrajectory))
+                if (!myTargets[i].isHit() && myTargets[i].onTrajectory(myTrajectory)) {
                     myTargets[i].kill();
+                    cout << "Target number " << i + 1 << " is hit!" << endl;
+                }
             }
         }
     } else if (command == RELOAD)
@@ -33,7 +35,7 @@ void game::execute(const string &command, const double angle) {
 
 bool game::allCleared() {
     for (int i = 0; i < noTargets; i++) {
-        if (myTargets[i].isHit())
+        if (!myTargets[i].isHit())
             return false;
     }
     return true;

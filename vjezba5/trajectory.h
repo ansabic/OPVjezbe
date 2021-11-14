@@ -17,6 +17,13 @@ class trajectory {
 
     bool parametrized;
     bool parametrizedX;
+
+    point limitFrom;
+    point limitTo;
+
+    bool length;
+
+    bool positive{};
 public:
     trajectory(point gunPosition, double angle);
 
@@ -26,6 +33,8 @@ public:
 
     bool isParametrizedX() const;
 
+    bool isLength() const;
+
     double getParamX() const;
 
     double getParamY() const;
@@ -34,9 +43,16 @@ public:
 
     double getL() const;
 
+    point getLimitFrom() const;
+
+    point getLimitTo() const;
+
+    bool isPositive() const;
+
     point intersection(trajectory tr2) const;
 
     bool intersects(trajectory tr2) const;
+
 };
 
 

@@ -24,7 +24,7 @@ class game {
 public:
     game(gun g, target *t, int n, trajectory tr);
 
-    void execute(const string &command, double angle);
+    void execute(const string &command, double angle = -999);
 
     bool allCleared();
 

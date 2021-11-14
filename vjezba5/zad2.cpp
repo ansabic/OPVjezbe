@@ -31,15 +31,20 @@ int main() {
     cout << "Enter ammo size of a gun:" << endl;
     cin >> n;
     gun newGun = gun(start, n);
-    trajectory newTrajectory = trajectory(point(0, 0, 0), point(1, 1, 0));
+    trajectory newTrajectory = trajectory(start, 0);
     game newGame = game(newGun, targets, targetNo, newTrajectory);
     newGame.startGame();
-    while (newGame.getState() || !newGame.allCleared()) {
+    while (newGame.getState() && !newGame.allCleared()) {
         cout << "Enter command:" << endl;
         string command;
         double angle;
-        cin >> command >> angle;
-        newGame.execute(command, angle);
+        cin >> command;
+        if (cin.peek() == '\n')
+            newGame.execute(command);
+        else {
+            cin >> angle;
+            newGame.execute(command, (int) angle % 360);
+        }
     }
     cout << "Congratulations! Game is complete! All " << targetNo << " targets are hit!" << endl;
 }
