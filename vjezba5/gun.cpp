@@ -7,10 +7,10 @@
 
 using namespace std;
 
-gun::gun(point p, int maxLoad, int currentLoad) {
+gun::gun(point p, int maxLoad) {
     position = p;
     this->maxLoad = maxLoad;
-    this->currentLoad = currentLoad;
+    this->currentLoad = maxLoad;
 }
 
 void gun::shoot() {
@@ -29,4 +29,8 @@ void gun::reload() {
 
 point gun::getPosition() const {
     return position;
+}
+
+bool gun::isEmpty() const {
+    return currentLoad == 0;
 }

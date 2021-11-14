@@ -11,8 +11,10 @@
 class target {
     point bottomLeftPoint;
     point upperRightPoint;
-    bool hit;
+    bool hit{};
 public:
+    target();
+
     target(point bl, point ur, bool hit = false);
 
     bool onTrajectory(trajectory tr);

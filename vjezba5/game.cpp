@@ -6,31 +6,29 @@
 #include "constants.h"
 #include <iostream>
 
-game::game(gun g, target *t, int n, trajectory tr) : myGun(g), myTargets(t), myTrajectory(tr), noTargets(n) {}
+game::game(gun g, target *t, int n, trajectory tr) : myGun(g), myTargets(t), myTrajectory(tr), noTargets(n),
+                                                     state(true) {}
 
-void game::execute(const string &command, const double *angle) {
-    switch (command) {
-        case SHOOT: {
-            this->myGun.shoot();
+void game::execute(const string &command, const double angle) {
+    if (command == SHOOT) {
+        this->myGun.shoot();
+        if (!myGun.isEmpty()) {
             for (int i = 0; i < noTargets; i++) {
                 if (!myTargets[i].isHit() && myTargets[i].onTrajectory(myTrajectory))
                     myTargets[i].kill();
             }
         }
-            break;
-        case RELOAD:
-            this->myGun.reload();
-            break;
-        case ROTATE:
-            this->myTrajectory = trajectory(myGun.getPosition(), *angle);
-            break;
-        case EXIT:
-            this->endGame();
-            break;
-        default:
-            showError();
-            break;
-    }
+    } else if (command == RELOAD)
+        this->myGun.reload();
+
+    else if (command == ROTATE)
+        this->myTrajectory = trajectory(myGun.getPosition(), angle);
+
+    else if (command == EXIT)
+        this->endGame();
+
+    else
+        showError();
 }
 
 bool game::allCleared() {
@@ -56,3 +54,4 @@ bool game::getState() const {
 void game::showError() {
     cout << "Wrong input, try again!" << endl;
 }
+

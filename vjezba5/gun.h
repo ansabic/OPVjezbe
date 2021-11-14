@@ -12,13 +12,15 @@ class gun {
     int maxLoad;
     int currentLoad;
 public:
-    gun(point p, int maxLoad, int currentLoad);
+    gun(point p, int maxLoad);
 
     void shoot();
 
     void reload();
 
     point getPosition() const;
+
+    bool isEmpty() const;
 };
 
 
