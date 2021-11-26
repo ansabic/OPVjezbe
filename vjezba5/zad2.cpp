@@ -7,7 +7,7 @@
 
 using namespace std;
 
-int main() {
+int main52() {
     auto *targets = new target[20];
     int targetNo;
     cout << "Enter no of targets:" << endl;
