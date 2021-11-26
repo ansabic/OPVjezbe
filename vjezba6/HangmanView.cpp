@@ -8,10 +8,11 @@
 
 void HangmanView::displayCurrentProgress() {
     cout << "Lives left: " << controller.getLives() << endl;
+    cout << controller.getGuessMovie() << endl;
 }
 
 void HangmanView::displayUsedLetters() {
-    cout << controller.getUsedLetters();
+    cout << "Used letters: " << controller.getUsedLetters() << endl;
 }
 
 void HangmanView::displayHangman() {
@@ -50,4 +51,8 @@ void HangmanView::displayHangman() {
 
 HangmanView::HangmanView() {
     controller = HangmanController();
+}
+
+string HangmanView::getMovie() {
+    return controller.getMovie();
 }

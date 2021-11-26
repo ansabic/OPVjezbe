@@ -39,7 +39,3 @@ void HangmanModel::setGuessMovie(const std::__cxx11::basic_string<char> &newGues
     HangmanModel::guessMovie = newGuessMovie;
 }
 
-HangmanModel::HangmanModel() {
-
-
-}

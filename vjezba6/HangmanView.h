@@ -16,6 +16,8 @@ public:
 
     void displayHangman();
 
+    string getMovie();
+
     HangmanView();
 
     HangmanController controller;

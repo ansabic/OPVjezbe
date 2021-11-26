@@ -5,51 +5,59 @@
 #include "vector"
 #include "constants.h"
 #include "HangmanController.h"
+#include <fstream>
+#include <algorithm>
 
 using namespace std;
 
 void HangmanController::loadMovie() {
-    FILE *file = fopen(FILE_LOCATION, "rt");
+    ifstream file;
+    file.open(FILE_LOCATION);
     vector<string> movies;
-    char *tempMovie;
+    string tempMovie;
     do {
-        fgets(tempMovie, 1, file);
+        getline(file, tempMovie);
         movies.emplace_back(tempMovie);
-    } while (*tempMovie != '\0');
-    int randomIndex = (int) (random() % movies.size());
+    } while (!tempMovie.empty());
+    int randomIndex = (int) ((random() * clock() / CLOCKS_PER_SEC) % movies.size());
     model.setMovie(movies[randomIndex]);
     model.setLives(LIVES);
     model.setInGame(true);
     string tempString;
-    for (int i = 0; i < model.getMovie().length(); i++) {
+    for (int i = 0; i < model.getMovie().length() - 1; i++) {
         tempString.append("*");
     }
     model.setGuessMovie(tempString);
+    file.close();
 }
 
-bool HangmanController::userEntry(const char *entry) {
-    if (entry == model.getMovie())
-        return true;
-    return false;
+void HangmanController::userEntry(const char *entry) {
+    string movie = model.getMovie();
+    movie.resize(movie.size() - 1);
+    if (entry == movie)
+        model.setInGame(false);
+    else
+        updateLives();
 }
 
-void HangmanController::checkLetter(const char letter, int start = 0) {
+void HangmanController::checkLetter(const string &letter, int start = 0) {
     if (usedLetters.find(letter) == string::npos)
-        usedLetters.append(&letter);
-    if (model.getGuessMovie().find(letter) == string::npos) {
+        usedLetters.append(letter);
+    if (model.getGuessMovie().find(letter, start) == string::npos) {
         string newMovie = model.getGuessMovie();
         u_long result = model.getMovie().find(letter, start);
         if (result != string::npos) {
             int pos = (int) result;
-            newMovie[pos] = letter;
+            newMovie[pos] = letter[0];
             model.setGuessMovie(newMovie);
             if (model.getGuessMovie().find('*') == string::npos) {
                 model.setInGame(false);
                 return;
             }
-            checkLetter(letter, pos + 1);
+            return checkLetter(letter, pos + 1);
         }
-        updateLives();
+        if (start == 0)
+            updateLives();
     }
 }
 
@@ -73,5 +81,13 @@ int HangmanController::getLives() {
 
 const string &HangmanController::getUsedLetters() {
     return usedLetters;
+}
+
+string HangmanController::getGuessMovie() {
+    return model.getGuessMovie();
+}
+
+string HangmanController::getMovie() {
+    return model.getMovie();
 }
 

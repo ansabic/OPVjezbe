@@ -10,19 +10,18 @@ int main() {
     cout << "You have " << LIVES << " lives." << " Good luck!" << endl;
     //"Game" Loop
     while (view.controller.checkIfGameIsOver()) {
-        cout << "Write a single letter, guess the whole word or write \"status\" to check current state:" << endl;
+        view.displayCurrentProgress();
+        view.displayUsedLetters();
+        cout << "Write a single letter or guess the whole word:" << endl;
         string s;
         cin >> s;
-        if (s == "status") {
-            view.displayCurrentProgress();
-            view.displayUsedLetters();
-        } else if (s.size() == 1)
-            view.controller.checkLetter(s[0], 0);
-        else
+        if (s.size() != 1)
             view.controller.userEntry(s.c_str());
+        else
+            view.controller.checkLetter(s, 0);
         view.displayHangman();
-        view.displayCurrentProgress();
     }
     cout << "GAME ENDED!" << endl;
+    cout << "The movie was: " << view.getMovie() << endl;
 
 }

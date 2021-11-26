@@ -28,7 +28,6 @@ public:
 
     void setGuessMovie(const string &newGuessMovie);
 
-    HangmanModel();
 };
 
 

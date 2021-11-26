@@ -7,7 +7,7 @@ using namespace std;
 
 #ifndef OPVJEZBE_CONSTANTS_H
 #define OPVJEZBE_CONSTANTS_H
-const char *const FILE_LOCATION = "movie.txt";
+const char *const FILE_LOCATION = "/home/antonio/Desktop/movie.txt";
 const int LIVES = 8;
 const vector<string> hangmanStates =
         {

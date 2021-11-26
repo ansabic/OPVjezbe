@@ -23,15 +23,19 @@ private:
 public:
     void loadMovie();
 
-    bool userEntry(const char *entry);
+    void userEntry(const char *entry);
 
-    void checkLetter(char letter, int start);
+    void checkLetter(const string &letter, int start);
 
     void updateLives();
 
     bool checkIfGameIsOver();
 
     int getLives();
+
+    string getGuessMovie();
+
+    string getMovie();
 };
 
 
