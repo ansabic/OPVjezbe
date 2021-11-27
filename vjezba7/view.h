@@ -13,10 +13,7 @@ class view {
 public:
     void printBoard();
 
-    view();
-
     class controller getController();
-
 };
 
 

@@ -13,7 +13,6 @@ int main() {
     int m;
     vector<point> points;
     view myView = view();
-    controller controller = myView.getController();
     cout << "Enter number of points: " << endl;
     cin >> n;
     for (int i = 0; i < n; i++) {
@@ -22,7 +21,7 @@ int main() {
         cin >> x;
         cin >> y;
         point resultPoint = point(x, y);
-        controller.insertPoint(resultPoint);
+        myView.getController().insertPoint(resultPoint);
         points.push_back(resultPoint);
     }
     cout << "Insert how many lines you want: " << endl;
@@ -31,7 +30,7 @@ int main() {
         int index1, index2;
         cout << "Insert 2 indices of inserted points: " << endl;
         cin >> index1 >> index2;
-        controller.insertLine(points[index1], points[index2]);
+        myView.getController().insertLine(points[index1], points[index2]);
     }
     cout << "Result: " << endl;
     myView.printBoard();

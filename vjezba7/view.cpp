@@ -8,27 +8,30 @@
 using namespace std;
 
 void view::printBoard() {
-    vector<bool> field = myController.getBoard().getField();
-    for (int i = 0; i < myController.getBoard().getHeight() + 2; i++) {
-        for (int j = 0; j < myController.getBoard().getWidth() + 2; j++) {
-            if (j == 0 || j == myController.getBoard().getWidth() + 1 || i == 0 ||
-                i == myController.getBoard().getHeight() + 1)
-                cout << myController.getBoard().getChar();
-            else {
-                if (field[i * myController.getBoard().getWidth() + j])
-                    cout << "*";
-                else
-                    cout << " ";
-            }
+    vector<bool> field = myController.getBoard()->getField();
+    for (int k = 0; k < myController.getBoard()->getWidth() + 2; k++) {
+        cout << myController.getBoard()->getChar() << " ";
+    }
+    cout << endl;
+    for (int i = 0; i < myController.getBoard()->getHeight(); i++) {
+        cout << myController.getBoard()->getChar() << " ";
+        for (int j = 0; j < myController.getBoard()->getWidth(); j++) {
+            if (field[i * myController.getBoard()->getWidth() + j])
+                cout << myController.getBoard()->getChar() << " ";
+            else
+                cout << "  ";
+
         }
+        cout << myController.getBoard()->getChar() << " ";
         cout << endl;
     }
-}
-
-view::view() {
-    myController = controller();
+    for (int k = 0; k < myController.getBoard()->getWidth() + 2; k++) {
+        cout << myController.getBoard()->getChar() << " ";
+    }
+    cout << endl;
 }
 
 class controller view::getController() {
     return myController;
 }
+

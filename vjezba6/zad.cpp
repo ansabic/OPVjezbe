@@ -4,7 +4,7 @@
 
 using namespace std;
 
-int main() {
+int main61() {
     HangmanView view = HangmanView();
     cout << "HANGMAN GAME" << endl;
     cout << "You have " << LIVES << " lives." << " Good luck!" << endl;

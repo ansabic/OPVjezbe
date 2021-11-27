@@ -9,13 +9,17 @@
 
 
 class controller {
-    board myBoard;
+    board *myBoard;
 public:
+    controller() {
+        myBoard = new board;
+    }
+
     void insertPoint(point newPoint);
 
     void insertLine(point p1, point p2);
 
-    class board getBoard() const;
+    class board *getBoard() const;
 };
 
 

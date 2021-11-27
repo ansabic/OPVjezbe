@@ -4,8 +4,4 @@
 
 #include "point.h"
 
-point::point(double posX, double posY) {
-    x = posX;
-    y = posY;
-
-}
+point::point(double posX, double posY) : x(posX), y(posY) {}

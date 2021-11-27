@@ -12,14 +12,14 @@ using namespace std;
 
 
 class board {
-    char border{};
-    int x{};
-    int y{};
+    char border;
+    int x;
+    int y;
     vector<bool> field;
 public:
     board();
 
-    vector<bool> getField();
+    vector<bool> getField() const;
 
     int getHeight() const;
 
