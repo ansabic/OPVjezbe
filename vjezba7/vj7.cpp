@@ -8,7 +8,7 @@
 
 using namespace std;
 
-int main() {
+int main7() {
     int n;
     int m;
     vector<point> points;
