@@ -50,6 +50,8 @@ public:
     double fastestDifference(std::vector<timer> &timers);
 
     bool operator<(timer &other) const;
+
+    void operator()(double penaltyInSec);
 };
 
 

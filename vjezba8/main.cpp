@@ -2,7 +2,6 @@
 // Created by antonio on 17. 12. 2021..
 //
 #include "vector"
-#include <cstdlib>
 #include <iostream>
 #include "timer.h"
 
@@ -19,6 +18,10 @@ int main() {
     cout << "Fastest:" << endl << fastest << endl;
     for (timer t: timers)
         cout << "Time difference in seconds from fastest:" << endl << (int) t.fastestDifference(timers) << endl;
+    for (timer t: timers) {
+        t(5);
+        cout << "New value:" << endl << t << endl;
+    }
 
     return 0;
 }

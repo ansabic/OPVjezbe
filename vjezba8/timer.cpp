@@ -117,7 +117,7 @@ timer timer::average(const std::vector<timer> &timers) {
 }
 
 std::ostream &operator<<(std::ostream &os, const timer &t) {
-    os << t.h << ":" << t.m << ":" << (int) t.s << std::endl;
+    os << t.h << ":" << t.m << ":" << (int) t.s;
     return os;
 }
 
@@ -143,6 +143,12 @@ bool timer::operator<(timer &other) const {
 double timer::fastestDifference(std::vector<timer> &timers) {
     timer fastest = timer::fastest(timers);
     return allInSec() - fastest.allInSec();
+}
+
+void timer::operator()(double penaltyInSec) {
+    timer temp = timer(0, 0, penaltyInSec);
+    timer &t = temp;
+    this->operator+=(t);
 }
 
 
