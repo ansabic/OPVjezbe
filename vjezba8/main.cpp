@@ -7,7 +7,7 @@
 
 using namespace std;
 
-int main() {
+int main8() {
     vector<timer> timers;
     timers.emplace_back(3, 4, 2.2);
     timers.emplace_back(4, 8, 8.4);
