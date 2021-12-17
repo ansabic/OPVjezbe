@@ -6,7 +6,9 @@
 #define OPVJEZBE_HUMANPLAYER_H
 
 
-class HumanPLayer {
+#include "Player.h"
+
+class HumanPlayer : public Player {
 
 };
 

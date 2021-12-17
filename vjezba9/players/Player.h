@@ -6,8 +6,27 @@
 #define OPVJEZBE_PLAYER_H
 
 
-class Player {
+#include <string>
 
+class Player {
+    int score;
+    int value;
+    int guess;
+    std::string name;
+public:
+    Player();
+
+    std::string getName() const;
+
+    void setValue(int newValue);
+
+    int getValue() const;
+
+    void addScore();
+
+    void setGuess(int newGuess);
+
+    int getGuess() const;
 };
 
 
