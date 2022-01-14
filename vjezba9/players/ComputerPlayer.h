@@ -9,7 +9,11 @@
 
 
 class ComputerPlayer : public Player {
+public:
+    explicit ComputerPlayer(const std::string &newName);
 
+    void generateGuess(int noOfPlayers);
+    void generateValue();
 };
 
 

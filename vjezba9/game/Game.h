@@ -13,8 +13,6 @@ class Game {
     bool gameState;
     std::vector<Player> players;
 
-    void addPlayer(Player player);
-
     void promptValues();
 
     void endGame();
@@ -22,7 +20,13 @@ class Game {
 public:
     Game();
 
+    void addPlayer(Player player);
+
     void startGame();
+
+    void calculate();
+
+    static void gameOverMessage();
 };
 
 

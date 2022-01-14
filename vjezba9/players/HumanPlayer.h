@@ -9,7 +9,11 @@
 #include "Player.h"
 
 class HumanPlayer : public Player {
+public:
+    HumanPlayer(const std::string &newName);
 
+    void askForGuess();
+    void askForValue();
 };
 
 
