@@ -9,7 +9,7 @@
 #include "zivotinje/pauci/Tarantula.h"
 #include "zivotinje/Brojac.h"
 
-int main() {
+int main92() {
     Zivotinja mrav1 = Mrav();
     Zivotinja galeb1 = Galeb();
     Zivotinja tarantula1 = Tarantula();

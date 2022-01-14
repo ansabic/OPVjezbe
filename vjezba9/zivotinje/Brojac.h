@@ -12,9 +12,9 @@
 class Brojac {
     std::vector<Zivotinja> zivotinje;
 public:
-    void printNoge() const;
+    virtual void printNoge() const;
 
-    void addZivotinja(const Zivotinja &zivotinja);
+    virtual void addZivotinja(const Zivotinja &zivotinja);
 };
 
 

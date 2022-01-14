@@ -11,13 +11,13 @@ class Zivotinja {
     int brojNogu;
     std::string vrsta;
 public:
-    int getBrojNogu() const;
+    virtual int getBrojNogu() const;
 
-    void setBrojNogu(int broj);
+    virtual void setBrojNogu(int broj);
 
-    std::string getVrsta() const;
+    virtual std::string getVrsta() const;
 
-    void setVrsta(std::string newVrsta);
+    virtual void setVrsta(std::string newVrsta);
 
 };
 

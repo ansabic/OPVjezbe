@@ -10,10 +10,10 @@
 
 class HumanPlayer : public Player {
 public:
-    HumanPlayer(const std::string &newName);
+    explicit HumanPlayer(const std::string &newName);
 
-    void askForGuess();
-    void askForValue();
+    static int askForGuess();
+    static int askForValue();
 };
 
 

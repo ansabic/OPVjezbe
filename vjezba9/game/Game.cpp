@@ -6,6 +6,7 @@
 #include "Game.h"
 #include "../players/ComputerPlayer.h"
 #include "game_constants.h"
+#include "../players/HumanPlayer.h"
 
 void Game::startGame() {
     if (players.empty())
@@ -23,7 +24,7 @@ Game::Game() {
     gameState = false;
 }
 
-void Game::addPlayer(Player player) {
+void Game::addPlayer(const Player& player) {
     players.push_back(player);
 }
 
@@ -32,31 +33,38 @@ void Game::endGame() {
 }
 
 void Game::promptValues() {
+    std::vector<Player> newPlayers;
     for(Player player: players) {
-        if(player.getType() == "human") {
+        int value = 0;
+        int guess = 0;
+        if (player.getType() == "human") {
             system("CLS");
             system("clear");
-            std::cout << player.getName() << " it' your turn! Press any key to continue!" << std::endl;
-            getchar();
-            HumanPlayer human = player.asHuman();
-            human.askForValue();
-            human.askForGuess();
-        }
-        else if(player.getType() == "computer") {
-            ComputerPlayer computer = player.asComputer();
-            computer.generateValue();
-            computer.generateGuess((int)players.size());
-        }
-    }
+            std::cout << player.getName() << " it' your turn!" << std::endl;
 
+            value = HumanPlayer::askForValue();
+            guess = HumanPlayer::askForGuess();
+        } else if (player.getType() == "computer") {
+            value = ComputerPlayer::generateValue();
+            guess = ((ComputerPlayer&&) player).generateGuess((int) players.size());
+        }
+        player.setValue(value);
+        player.setGuess(guess);
+        Player newPlayer = player;
+        newPlayers.push_back(newPlayer);
+    }
+    players = newPlayers;
 }
 
 void Game::calculate() {
     int sum = 0;
-    for(const Player& player: players) {
+    for(Player player: players) {
         sum += player.getValue();
+        std::cout << player.getName() << "picked " << player.getScore() << std::endl;
     }
+    std::cout << "Sum was " << sum << "." << std::endl;
     for(Player& player: players) {
+        std::cout << player.getName() << " guessed " << player.getGuess() << std::endl;
         if(player.getGuess() == sum)
             player.addScore();
         if(player.getScore() == GOAL_SCORE){

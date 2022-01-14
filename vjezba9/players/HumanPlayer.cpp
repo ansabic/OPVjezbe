@@ -9,16 +9,16 @@ HumanPlayer::HumanPlayer(const std::string& newName) : Player("human", newName) 
 
 }
 
-void HumanPlayer::askForGuess() {
+int HumanPlayer::askForGuess() {
     int guess;
     std::cout<< "Enter guess:" << std::endl;
     std:: cin >> guess;
-    setGuess(guess);
+    return guess;
 }
 
-void HumanPlayer::askForValue() {
+int HumanPlayer::askForValue() {
     int value;
     std::cout<< "Enter value:" << std::endl;
     std:: cin >> value;
-    setValue(value);
+    return value;
 }

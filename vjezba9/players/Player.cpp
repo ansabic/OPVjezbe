@@ -4,7 +4,6 @@
 
 #include <iostream>
 #include "Player.h"
-#include "ComputerPlayer.h"
 
 void Player::setValue(int newValue) {
     value = newValue;
@@ -15,8 +14,8 @@ int Player::getValue() const {
 }
 
 void Player::addScore() {
-    std::cout << "Congrats" << " " << name << ", 1 point added!" << "Your score is " << score << "." << std::endl;
     score++;
+    std::cout << "Congrats" << " " << name << ", 1 point added!" << "Your score is " << score << "." << std::endl;
 }
 
 void Player::setGuess(int newGuess) {
@@ -37,14 +36,6 @@ Player::Player(const std::string& newType,const std::string &newName) {
     guess = 0;
     name = newName;
     type = newType;
-}
-
-HumanPlayer&& Player::asHuman() {
-    return (HumanPlayer&&) *this;
-}
-
-ComputerPlayer &&Player::asComputer() {
-    return (ComputerPlayer&&) *this;
 }
 
 std::string Player::getName(){

@@ -8,7 +8,7 @@ ComputerPlayer::ComputerPlayer(const std::string& newName) : Player("computer", 
 
 }
 
-void ComputerPlayer::generateGuess(int noOfPlayers) {
+int ComputerPlayer::generateGuess(int noOfPlayers) {
     int sum = getValue();
     for(int i = 0; i < noOfPlayers - 1; i++) {
         int rand = (int)( random() % 3);
@@ -26,10 +26,10 @@ void ComputerPlayer::generateGuess(int noOfPlayers) {
                 sum += 1;
         }
     }
-    setGuess(sum);
+    return sum;
 }
 
-void ComputerPlayer::generateValue() {
+int ComputerPlayer::generateValue() {
     int rand = (int)( random() % 3) + 1;
-    setValue(rand);
+    return rand;
 }

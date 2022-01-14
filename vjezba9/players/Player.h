@@ -7,15 +7,12 @@
 
 
 #include <string>
-#include "HumanPlayer.h"
 
 class Player {
-
-
-    int score{};
-    int value{};
-    int guess{};
-    std::sting name;
+    int score;
+    int value;
+    int guess;
+    std::string name;
     std::string type;
 public:
     explicit Player(const std::string &newType,const std::string &newName);
@@ -35,10 +32,6 @@ public:
     int getGuess() const;
 
     std::string getName();
-
-    HumanPlayer&& asHuman();
-
-    ComputerPlayer&& asComputer();
 };
 
 

@@ -15,18 +15,18 @@ class Game {
 
     void promptValues();
 
+    void calculate();
+
+    static void gameOverMessage();
+
     void endGame();
 
 public:
     Game();
 
-    void addPlayer(Player player);
+    void addPlayer(const Player& player);
 
     void startGame();
-
-    void calculate();
-
-    static void gameOverMessage();
 };
 
 
