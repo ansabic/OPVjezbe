@@ -33,19 +33,7 @@ void sort(T *array, int size, bool (*comparator)(T, T));
 
 template<>
 void sort<int>(int *array, int size, bool (*comparator)(int, int)) {
-    for (int j = 0; j < size - 1; j++) {
-        for (int i = j; i < size - 1; i++) {
-            int current = array[i];
-            int next = array[i + 1];
-            if (comparator(current, next)) {
-                int temp = next;
-                array[i] = array[i + 1];
-                array[i + 1] = temp;
-                break;
-            }
-
-        }
-    }
+    std::sort(array,  array + size, compareInts);
 }
 
 template<>
@@ -57,7 +45,7 @@ int main() {
     std::string firstString = "sortiraj";
     std::string secondString = "SortiRaJ";
 
-    char *testString = strdup(firstString.data());
+    char *testString = strdup(secondString.data());
     std::cout << testString << std::endl;
     sort<char>(testString, (int) firstString.size(), compareChar);
     std::cout << testString << std::endl;
