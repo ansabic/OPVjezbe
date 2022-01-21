@@ -4,6 +4,7 @@
 
 #include <iostream>
 #include <cstring>
+#include <algorithm>
 #include "Stack.h"
 
 bool compareInts(int a, int b) {
@@ -49,16 +50,7 @@ void sort<int>(int *array, int size, bool (*comparator)(int, int)) {
 
 template<>
 void sort<char>(char *array, int size, bool (*comparator)(char, char)) {
-    for (int j = 0; j < size - 1; j++) {
-        for (int i = j; i < size - 1; i++) {
-            if (comparator(array[i], array[i + 1])) {
-                char temp = array[i];
-                array[i] = array[i + 1];
-                array[i + 1] = temp;
-                break;
-            }
-        }
-    }
+    std::sort(array,  array + size, compareChar);
 }
 
 int main() {

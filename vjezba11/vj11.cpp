@@ -72,7 +72,7 @@ void print(vector<int> &vec) {
     cout << endl;
 }
 
-int main11() {
+int mainv11() {
     vector<int> numbers = getNumbers();
     cout << "Larger than 500:" << endl << countLargerThan500(numbers) << endl;
     cout << "Min: " << min(numbers) << endl;

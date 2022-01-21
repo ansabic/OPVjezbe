@@ -10,7 +10,7 @@ class Stack {
     T *array = nullptr;
     int size = 0;
 public:
-    Stack(int capacity);
+    explicit Stack(int capacity);
 
     void push(T element);
 
