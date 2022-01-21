@@ -5,7 +5,7 @@
 //
 // Created by antonio on 17. 12. 2021..
 //
-int main() {
+int main91() {
     Game newGame = Game();
     HumanPlayer humanPlayer1 = HumanPlayer("player1");
     HumanPlayer humanPlayer2 = HumanPlayer("player2");
