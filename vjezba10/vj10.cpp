@@ -21,10 +21,10 @@ bool compareFloats(float a, float b) {
 bool compareChar(char a, char b) {
     char lowerA = (char) tolower(a);
     char lowerB = (char) tolower(b);
-    if (strcmp(&lowerA, &lowerB) > 0)
-        return true;
-    else
+    if (lowerA - lowerB >= 0)
         return false;
+    else
+        return true;
 }
 
 template<class T>
@@ -32,17 +32,15 @@ void sort(T *array, int size, bool (*comparator)(T, T));
 
 template<>
 void sort<int>(int *array, int size, bool (*comparator)(int, int)) {
-    for (int j = 0; j < size; j++) {
-        for (int i = j; i < size; i++) {
-            if (array + i != nullptr && array + i + 1 != nullptr) {
-                int current = array[i];
-                int next = array[i + 1];
-                if (comparator(current, next)) {
-                    int temp = next;
-                    array[i] = array[i + 1];
-                    array[i + 1] = temp;
-                    break;
-                }
+    for (int j = 0; j < size - 1; j++) {
+        for (int i = j; i < size - 1; i++) {
+            int current = array[i];
+            int next = array[i + 1];
+            if (comparator(current, next)) {
+                int temp = next;
+                array[i] = array[i + 1];
+                array[i + 1] = temp;
+                break;
             }
 
         }
@@ -51,17 +49,15 @@ void sort<int>(int *array, int size, bool (*comparator)(int, int)) {
 
 template<>
 void sort<char>(char *array, int size, bool (*comparator)(char, char)) {
-    for (int i = 0; i < size; i++) {
-        if (array + i != nullptr && array + i + 1 != nullptr) {
-            char current = array[i];
-            char next = array[i + 1];
-            if (comparator(current, next)) {
-                char temp = next;
-                array[i + 1] = array[i];
-                array[i] = temp;
+    for (int j = 0; j < size - 1; j++) {
+        for (int i = j; i < size - 1; i++) {
+            if (comparator(array[i], array[i + 1])) {
+                char temp = array[i];
+                array[i] = array[i + 1];
+                array[i + 1] = temp;
+                break;
             }
         }
-
     }
 }
 
@@ -70,6 +66,7 @@ int main() {
     std::string secondString = "SortiRaJ";
 
     char *testString = strdup(firstString.data());
+    std::cout << testString << std::endl;
     sort<char>(testString, (int) firstString.size(), compareChar);
     std::cout << testString << std::endl;
     Stack<int> stack = Stack<int>(10);
